@@ -1,0 +1,48 @@
+﻿@using ANK13Identity.Areas.Identity.Data;
+@*Kişiye öğrenci rolü verme/kaldırma ekranı*@
+
+@*StudentRoleController'ın Index'i'*@
+
+@model List<ANK13IdentityUser>
+<h1>KULLANICILAR</h1>
+
+<table class="table-hover">
+
+    <tr>
+        <th>
+            KULLANICI BİLGİSİ
+        </th>
+        <th>
+            EKLEME İŞLEMİ
+        </th>
+        <th>
+            SİLME İŞLEMİ
+        </th>
+    </tr>
+
+
+    @*  Kullanıcı listesi içerisinden foreach ile dönüp yazdıracağız*@
+
+
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.FirstName  @user.LastName</td>
+            <td><a class="btn btn-success" asp-action="AddStudentRole" asp-route-id="@user.Id">Öğrenci Rolü Ekle</a> </td>
+            <td><a class="btn btn-danger"  asp-action="RemoveStudentRole" asp-route-id="@user.Id">Öğrenci Rolü SİL </a></td>
+        </tr>
+    }
+
+
+
+
+
+</table>
+
+@{
+    if (TempData["Hata"] != null)
+    {
+        <h1 class="bg-danger">@TempData["Hata"]</h1>
+    }
+
+}

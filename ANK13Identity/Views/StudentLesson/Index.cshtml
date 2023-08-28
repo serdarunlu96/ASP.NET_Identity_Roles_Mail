@@ -1,0 +1,31 @@
+﻿@using ANK13Identity.Entities;
+@model StudentLesson
+
+<table class="d-lg-table table-hover">
+    <tr>
+        <th>
+            Secilen Dersler
+        </th>
+    </tr>
+    @{
+        foreach (var item in (List<StudentLesson>)ViewBag.StudentLessons)
+        {
+            <tr>
+                <td>@item.Lesson.Name</td>
+                <td>@item.Lesson.Credit</td>
+            </tr>
+        }
+    }
+</table>
+
+<form asp-action="Index">
+    <div class="form-group">
+       <label asp-for="LessonId">
+           Ders:
+       </label>
+       <select asp-for="LessonId" asp-items="@(new SelectList(@ViewBag.Lessons,"Id","Name"))"></select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Ders Ekle" class="btn btn-primary">
+    </div>
+</form>

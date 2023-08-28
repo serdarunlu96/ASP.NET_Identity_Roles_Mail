@@ -1,0 +1,16 @@
+﻿@using ANK13Identity.Areas.Identity.Data;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model ANK13IdentityUser
+
+<h1> @Model.FirstName @Model.LastName kişisinden öğrenci rolünü silmek istediğinize emin misiniz? </h1>
+
+<form asp-action="RemoveStudentRole" method="post">
+    <input class="btn-primary" type="submit" value="EVET" />
+
+
+</form>
+<a class="btn btn-danger" asp-action="Index"> HAYIR</a>
